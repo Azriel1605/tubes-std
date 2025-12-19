@@ -61,3 +61,33 @@ void addKegiatan(adrMahasiswa p, string kegiatan){
     q->info = kegiatan;
 }
 
+int hitungKegiatan(adrMahasiswa p){
+    int jumlah;
+    adrKegiatan q;
+
+    if (p != nullptr) {
+        adrKegiatan q = p->child;
+        while (q != nullptr) {
+            jumlah++
+            q = q->next
+        }
+    }
+    return jumlah; 
+}
+
+void tampilKegiatan(adrMahasiswa p){
+    if (p == nullptr){
+        cout << "Data mahasiswa tidak ada" << endl; 
+    } else {
+        cout << "Daftar kegiatan dari " << p->info.nama << ":" << endl;
+
+        adrKegiatan q = p->child; 
+
+        if (q == nullptr) {
+            cout << "Data kegiatan mahasiswa tidak ada" << endl;
+        } else {
+            cout << "- " << q->info << endl;
+            q = q->next;  
+        }
+    }
+}
