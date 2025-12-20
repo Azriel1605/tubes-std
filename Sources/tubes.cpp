@@ -14,6 +14,7 @@ adrMahasiswa createMahasiswa(string nama, string nim){
     p->info.nama = nama; 
     p->info.nim = nim; 
     p->child = nullptr;
+    p->next = nullptr;
     return p; 
 }
 
@@ -42,6 +43,7 @@ void addMahasiswa(list &L, adrMahasiswa p){
     // Menerima input address mahasiswa dan List L yang mungkin kosong;
     // Melakukan cek jika mahasiswa sudah terdaftar
     // Menambahkan mahasiswa baru pada list paling akhir
+
     if (!L.first){
         L.first = p;
     } else if (!findMahasiswa(L, p->info.nama, p->info.nim)){
@@ -154,31 +156,28 @@ void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out){
 }
 
 void tampilSemuaMahasiswa(list L){
-    cout << "FLAG";
     adrMahasiswa p = L.first;
     if (!p){
         cout << "Data Mahasiswa Kosong" << endl;
-    } else{
-        while (p)
-        {
-            
-            adrKegiatan q = p->child;
+    } else {
+        while (p) { // Loop utama menelusuri mahasiswa
             cout << "Nama Mahasiswa: " << p->info.nama << endl;
+            
+            // PERBAIKAN: q harus diatur ulang ke anak (child) mahasiswa saat ini (p)
+            adrKegiatan q = p->child; 
+            
             cout << "Kegiatan: ";
             if (!q){
                 cout << "-";
+            } else {
+                while (q) { // Loop menelusuri kegiatan mahasiswa p
+                    cout << q->info << ", ";
+                    q = q->next;
+                }
             }
-            cout << "FLAG";
-            while (q)
-            {
-                cout << q->info << ", ";
-                q =q->next;
-            }
-
             cout << endl;
-            p = p->next;
+            p = p->next; // Pindah ke mahasiswa berikutnya
         }
-        
     }
 }
 
