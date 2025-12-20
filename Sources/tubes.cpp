@@ -159,10 +159,10 @@ void tampilSemuaMahasiswa(list L){
     if (!p){
         cout << "Data Mahasiswa Kosong" << endl;
     } else{
-        adrKegiatan q = p->child;
         while (p)
         {
             
+            adrKegiatan q = p->child;
             cout << "Nama Mahasiswa: " << p->info.nama << endl;
             cout << "Kegiatan: ";
             if (!q){
