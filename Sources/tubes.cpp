@@ -144,6 +144,7 @@ void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out){
 }
 
 void tampilSemuaMahasiswa(list L){
+    cout << "masuk";
     adrMahasiswa p = L.first;
     if (!p){
         cout << "Data Mahasiswa Kosong" << endl;
