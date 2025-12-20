@@ -17,6 +17,13 @@ adrMahasiswa createMahasiswa(string nama, string nim){
     return p; 
 }
 
+adrKegiatan createKegiatan(string kegiatan){
+    adrKegiatan k = new elmKegiatan; 
+    k->info = kegiatan; 
+    k->next = nullptr; 
+    return k; 
+}
+
 adrMahasiswa findMahasiswa(list L, string nama, string nim){
     // menerima input address mahasiswa dan list L
     // Mengembalikan address mahasiswa jika ditemukan dalam list
@@ -43,7 +50,7 @@ void addMahasiswa(list &L, adrMahasiswa p){
         while (q->next != nullptr) {
             q = q->next; 
         }
-        q->next = p; 
+        q->next = p;
     }
 }
 
@@ -59,17 +66,20 @@ adrKegiatan findKegiatan(adrMahasiswa p, string kegiatan){
 }
 
 void addKegiatan(adrMahasiswa p, string kegiatan){
-    adrKegiatan q = p->child;
-    while (q->next)
-    {
-        q = q->next;
+    adrKegiatan k = createKegiatan(kegiatan);
+    if (p->child == nullptr) {
+        p->child = k;
+    } else {
+        adrKegiatan q = p->child;
+        while (q->next != nullptr) {
+            q = q->next;
+        }
+        q->next = k;
     }
-
-    q->info = kegiatan;
 }
 
 int hitungKegiatan(adrMahasiswa p){
-    int jumlah;
+    int jumlah = 0;
     adrKegiatan q;
 
     if (p != nullptr) {
@@ -144,7 +154,7 @@ void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out){
 }
 
 void tampilSemuaMahasiswa(list L){
-    cout << "masuk";
+    cout << "FLAG";
     adrMahasiswa p = L.first;
     if (!p){
         cout << "Data Mahasiswa Kosong" << endl;
@@ -158,6 +168,7 @@ void tampilSemuaMahasiswa(list L){
             if (!q){
                 cout << "-";
             }
+            cout << "FLAG";
             while (q)
             {
                 cout << q->info << ", ";
@@ -165,7 +176,7 @@ void tampilSemuaMahasiswa(list L){
             }
 
             cout << endl;
-            
+            p = p->next;
         }
         
     }

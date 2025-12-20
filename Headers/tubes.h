@@ -33,6 +33,7 @@ struct elmKegiatan {
 
 void createList(list &L);
 adrMahasiswa createMahasiswa(string nama, string nim);
+adrKegiatan createKegiatan(string kegiatan);
 adrMahasiswa findMahasiswa(list L, string nama, string nim);
 void addMahasiswa(list &L, adrMahasiswa p);
 adrKegiatan findKegiatan(adrMahasiswa p, string kegiatan);

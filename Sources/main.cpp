@@ -12,26 +12,25 @@ int main(){
     
     createList(L);
     
-    cout << "Masuk";
     nama = "Alfa"; nim = "001";
-    createMahasiswa(nama, nim);
-    p  = findMahasiswa(L, nama, nim);
+    p = createMahasiswa(nama, nim);
+    addMahasiswa(L, p);
     addKegiatan(p, "Himpunan Mahasiswa");
+    
     addKegiatan(p, "GDGoC");
     addKegiatan(p, "Event Organizer");
     addKegiatan(p, "Workshop");
     
-    
     nama = "Omega"; nim = "002";
-    createMahasiswa(nama, nim);
-    p  = findMahasiswa(L, nama, nim);
+    p = createMahasiswa(nama, nim);
+    addMahasiswa(L, p);
     addKegiatan(p, "Kompetisi ONMIPA");
     addKegiatan(p, "Pengabdian Masyarakat");
     addKegiatan(p, "Event Organizer");
     
     nama = "Theta"; nim = "003";
-    createMahasiswa(nama, nim);
-    p  = findMahasiswa(L, nama, nim);
+    p = createMahasiswa(nama, nim);
+    addMahasiswa(L, p);
     addKegiatan(p, "Himpunan Mahasiswa");
     addKegiatan(p, "GDGoC");
     addKegiatan(p, "Event Organizer");
