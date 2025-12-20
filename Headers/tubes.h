@@ -16,7 +16,6 @@ struct mahasiswa {
 
 typedef mahasiswa infotype;
 
-
 struct elmMahasiswa {
     adrMahasiswa next;
     adrKegiatan child;

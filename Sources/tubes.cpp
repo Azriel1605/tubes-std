@@ -92,25 +92,106 @@ void tampilKegiatan(adrMahasiswa p){
     }
 }
 
-void delMahasiswa(adrMahasiswa p){
+void delMahasiswa(list &L,  adrMahasiswa p, adrMahasiswa &out){
+    adrMahasiswa q = L.first;
 
+    if (q){ // if list is not empty
+        if (q == p){ // if deletion is the first element
+            L.first = p->next;
+            out = p;
+        } else{
+            while (q->next && q->next != p){ //find the element before p
+                q = q->next;
+            }
+
+            if (q->next){ //if the element p exist
+                q->next = p->next;
+                out = p;
+            }
+        }
+    }
 }
 
 
-void delKegiatan(adrMahasiswa p){
+void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out){
+    adrKegiatan q = p->child;
+
+    if (q){
+        if (q->info == kegiatan){
+            p->child = q->next;
+            out = q;
+        } else{
+            while (q->next && q->next->info != kegiatan)
+            {
+                q = q->next;
+            }
+        
+            if (q->next){
+                q->next = q->next->next;
+                out = q->next;
+            }
+        }
+
+    }
 
 }
 
 void tampilSemuaMahasiswa(list L){
+    adrMahasiswa p = L.first;
+    if (!p){
+        cout << "Data Mahasiswa Kosong" << endl;
+    } else{
+        adrKegiatan q = p->child;
+        while (p)
+        {
+            
+            cout << "Nama Mahasiswa: " << p->info.nama << endl;
+            cout << "Kegiatan: ";
+            if (!q){
+                cout << "-";
+            }
+            while (q)
+            {
+                cout << q->info << ", ";
+                q =q->next;
+            }
 
+            cout << endl;
+            
+        }
+        
+    }
 }
 
 int jumlahKegiatanMahasiswa(adrMahasiswa p){
+    adrKegiatan q = p->child;
+    int n = 0;
 
+    while (q)
+    {
+        n = n+1;
+        q = q->next;
+    }
+    
 }
 
 adrMahasiswa mahasiswaAktif(list L){
+    adrMahasiswa p = L.first;
+    adrMahasiswa temp = p;
+    int mx = -1;
+    int n;
 
+    while (p)
+    {
+        n = jumlahKegiatanMahasiswa(p);
+        if (n > mx){
+            mx = n;
+            temp = p;
+        }
+
+        p = p->next;
+    }
+    
 }
 
 
