@@ -68,8 +68,8 @@ int hitungKegiatan(adrMahasiswa p){
     if (p != nullptr) {
         adrKegiatan q = p->child;
         while (q != nullptr) {
-            jumlah++
-            q = q->next
+            jumlah++;
+            q = q->next;
         }
     }
     return jumlah; 
@@ -91,3 +91,26 @@ void tampilKegiatan(adrMahasiswa p){
         }
     }
 }
+
+void delMahasiswa(adrMahasiswa p){
+
+}
+
+
+void delKegiatan(adrMahasiswa p){
+
+}
+
+void tampilSemuaMahasiswa(list L){
+
+}
+
+int jumlahKegiatanMahasiswa(adrMahasiswa p){
+
+}
+
+adrMahasiswa mahasiswaAktif(list L){
+
+}
+
+

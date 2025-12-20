@@ -9,13 +9,13 @@ struct elmKegiatan;
 typedef elmMahasiswa *adrMahasiswa;
 typedef elmKegiatan *adrKegiatan;
 
+struct mahasiswa {
+    string nama; 
+    string nim; 
+};
 
 typedef mahasiswa infotype;
 
-struct mahasiswa {
-    string nama; 
-    int nim; 
-};
 
 struct elmMahasiswa {
     adrMahasiswa next;
