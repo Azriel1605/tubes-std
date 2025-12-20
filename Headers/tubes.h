@@ -31,4 +31,19 @@ struct elmKegiatan {
     string info; 
 };
 
-#endif;
+void createList(list &L);
+adrMahasiswa createMahasiswa(string nama, string nim);
+adrMahasiswa findMahasiswa(list L, string nama, string nim);
+void addMahasiswa(list &L, adrMahasiswa p);
+adrKegiatan findKegiatan(adrMahasiswa p, string kegiatan);
+void addKegiatan(adrMahasiswa p, string kegiatan);
+int hitungKegiatan(adrMahasiswa p);
+void tampilKegiatan(adrMahasiswa p);
+void delMahasiswa(list &L,  adrMahasiswa p, adrMahasiswa &out);
+void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out);
+void tampilSemuaMahasiswa(list L);
+int jumlahKegiatanMahasiswa(adrMahasiswa p);
+adrMahasiswa mahasiswaAktif(list L);
+
+
+#endif

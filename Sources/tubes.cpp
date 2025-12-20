@@ -17,13 +17,13 @@ adrMahasiswa createMahasiswa(string nama, string nim){
     return p; 
 }
 
-adrMahasiswa findMahasiswa(list L, adrMahasiswa p){
+adrMahasiswa findMahasiswa(list L, string nama, string nim){
     // menerima input address mahasiswa dan list L
     // Mengembalikan address mahasiswa jika ditemukan dalam list
     // dan return null jika tidak ditemukan
     adrMahasiswa q = L.first;
     while (q){
-        if (q->info.nama == p->info.nama && q->info.nim == p->info.nim) {
+        if (q->info.nama == nama && q->info.nim == nim) {
             return q; 
         }
         q = q->next; 
@@ -37,7 +37,7 @@ void addMahasiswa(list &L, adrMahasiswa p){
     // Menambahkan mahasiswa baru pada list paling akhir
     if (!L.first){
         L.first = p;
-    } else if (!findMahasiswa(L, p)){
+    } else if (!findMahasiswa(L, p->info.nama, p->info.nim)){
         adrMahasiswa q = L.first; 
         
         while (q->next != nullptr) {
@@ -49,6 +49,13 @@ void addMahasiswa(list &L, adrMahasiswa p){
 
 adrKegiatan findKegiatan(adrMahasiswa p, string kegiatan){
     adrKegiatan q = p->child;
+    while (q){
+        if (q->info == kegiatan){
+            return q;
+        }
+        q = q->next;
+    }
+    return nullptr;
 }
 
 void addKegiatan(adrMahasiswa p, string kegiatan){
@@ -172,6 +179,8 @@ int jumlahKegiatanMahasiswa(adrMahasiswa p){
         n = n+1;
         q = q->next;
     }
+
+    return n;
     
 }
 
@@ -191,7 +200,8 @@ adrMahasiswa mahasiswaAktif(list L){
 
         p = p->next;
     }
-    
+
+    return temp;
 }
 
 
