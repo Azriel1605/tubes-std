@@ -9,67 +9,63 @@ int main(){
     adrMahasiswa p, q;
     adrKegiatan k;
     string nama, nim, kegiatan;
-    
     createList(L);
 
-    
-    
-    nama = "Alfa"; nim = "001";
-    p = createMahasiswa(nama, nim);
-    addMahasiswa(L, p);
-    addKegiatan(p, "Himpunan Mahasiswa");
-    
-    addKegiatan(p, "GDGoC");
-    addKegiatan(p, "Event Organizer");
-    addKegiatan(p, "Workshop");
-    
-    nama = "Omega"; nim = "002";
-    p = createMahasiswa(nama, nim);
-    addMahasiswa(L, p);
-    addKegiatan(p, "Kompetisi ONMIPA");
-    addKegiatan(p, "Pengabdian Masyarakat");
-    addKegiatan(p, "Event Organizer");
-    
-    nama = "Theta"; nim = "003";
-    p = createMahasiswa(nama, nim);
-    addMahasiswa(L, p);
-    addKegiatan(p, "Himpunan Mahasiswa");
-    addKegiatan(p, "GDGoC");
-    addKegiatan(p, "Event Organizer");
-    addKegiatan(p, "Workshop");
-    addKegiatan(p, "Competitive Programming");
-    addKegiatan(p, "Digital Bussiness Competition");
-    addKegiatan(p, "Seminar");
-    addKegiatan(p, "Kepanitiaan");
-    
-    tampilSemuaMahasiswa(L);
-    cout << endl;
-
-    p = findMahasiswa(L, "Theta", "003");
-    delKegiatan(p, "Workshop", k);
-    cout << "Setelah menghapus kegiatan Workshop dari Theta:" << endl;
-    tampilSemuaMahasiswa(L);
-    cout << endl;
-
-    cout << "Hapus Mahasiswa Omega beserta kegiatannya:" << endl;
-    p = findMahasiswa(L, "Omega", "002");
-    delMahasiswa(L, p, q);
-    tampilSemuaMahasiswa(L);
-    cout << endl;
-
-    cout << "Mahasiswa Paling Aktif:" << endl;
-    p = mahasiswaAktif(L);
-    if (p){
-        cout << "Nama: " << p->info.nama << ", NIM: " << p->info.nim << ", Jumlah Kegiatan: " << hitungKegiatan(p) << endl;
-    } else {
-        cout << "Data Mahasiswa Kosong" << endl;
+    int choice = -1;
+    while (choice != 0)
+    {
+        showMenu();
+        cin >> choice;
+        if (choice == 1){
+            // Tambah Mahasiswa
+            cout << "Masukkan nama mahasiswa: ";
+            cin >> nama;
+            cout << "Masukkan NIM mahasiswa: ";
+            cin >> nim;
+            addMahasiswa(L, createMahasiswa(nama, nim));
+        } else if (choice == 2){
+            // Tambah Kegiatan Mahasiswa
+            cout << "Masukkan nama mahasiswa: ";
+            cin >> nama;
+            cout << "Masukkan NIM mahasiswa: ";
+            cin >> nim;
+            p = findMahasiswa(L, nama, nim);
+            cout << "Masukkan kegiatan mahasiswa: ";
+            cin >> kegiatan;
+            addKegiatan(p, kegiatan);
+        } else if (choice == 3){
+            // Hapus Mahasiswa
+            cout << "Masukkan nama mahasiswa: ";
+            cin >> nama;
+            cout << "Masukkan NIM mahasiswa: ";
+            cin >> nim;
+            p = findMahasiswa(L, nama, nim);
+            delMahasiswa(L, p, q);
+        } else if (choice == 4){
+            // Hapus Kegiatan Mahasiswa
+            cout << "Masukkan nama mahasiswa: ";
+            cin >> nama;
+            cout << "Masukkan NIM mahasiswa: ";
+            cin >> nim;
+            p = findMahasiswa(L, nama, nim);
+            delKegiatan(p, kegiatan, k);
+        } else if (choice == 5){
+            // Tampilkan Semua Mahasiswa dan Kegiatannya
+            tampilSemuaMahasiswa(L);
+        } else if (choice == 6){
+            // Tampilkan Mahasiswa Paling Aktif
+            p = mahasiswaAktif(L);
+            if (p != nullptr){
+                cout << "Mahasiswa paling aktif adalah " << p->info.nama << " dengan " << jumlahKegiatanMahasiswa(p) << " kegiatan." << endl;
+            } else {
+                cout << "Data mahasiswa kosong." << endl;
+            }
+        } else if (choice == 0){
+            cout << "Keluar dari program." << endl;
+        } else {
+            cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+        }
     }
-
-    
-
-
-    
-    
     
 
     return 0;

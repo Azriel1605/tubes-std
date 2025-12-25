@@ -31,6 +31,7 @@ struct elmKegiatan {
     string info; 
 };
 
+void showMenu();
 void createList(list &L);
 adrMahasiswa createMahasiswa(string nama, string nim);
 adrKegiatan createKegiatan(string kegiatan);

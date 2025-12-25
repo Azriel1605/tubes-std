@@ -5,6 +5,7 @@
 using namespace std;
 
 void showMenu(){
+
     cout << "-------------------------------------------" << endl;
     cout << "Menu Program:" << endl;
     cout << "1. Tambah Mahasiswa" << endl;
@@ -15,6 +16,7 @@ void showMenu(){
     cout << "6. Tampilkan Mahasiswa Paling Aktif" << endl;
     cout << "0. Keluar" << endl;
     cout << "Pilihan Anda: ";
+
 }
 
 void createList(list &L){
