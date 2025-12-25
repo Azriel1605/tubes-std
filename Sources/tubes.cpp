@@ -83,15 +83,19 @@ adrKegiatan findKegiatan(adrMahasiswa p, string kegiatan){
 }
 
 void addKegiatan(adrMahasiswa p, string kegiatan){
-    adrKegiatan k = createKegiatan(kegiatan);
-    if (p->child == nullptr) {
-        p->child = k;
-    } else {
-        adrKegiatan q = p->child;
-        while (q->next != nullptr) {
-            q = q->next;
+    if (!p){
+        cout << "Data mahasiswa tidak ada" << endl;
+    } else{
+        adrKegiatan k = createKegiatan(kegiatan);
+        if (p->child == nullptr) {
+            p->child = k;
+        } else {
+            adrKegiatan q = p->child;
+            while (q->next != nullptr) {
+                q = q->next;
+            }
+            q->next = k;
         }
-        q->next = k;
     }
 }
 
@@ -119,7 +123,8 @@ void tampilKegiatan(adrMahasiswa p){
 
         if (q == nullptr) {
             cout << "Data kegiatan mahasiswa tidak ada" << endl;
-        } else {
+        }
+        while (q != nullptr) {
             cout << "- " << q->info << endl;
             q = q->next;  
         }
