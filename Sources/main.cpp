@@ -11,6 +11,8 @@ int main(){
     string nama, nim, kegiatan;
     
     createList(L);
+
+    
     
     nama = "Alfa"; nim = "001";
     p = createMahasiswa(nama, nim);

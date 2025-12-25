@@ -4,6 +4,19 @@
 
 using namespace std;
 
+void showMenu(){
+    cout << "-------------------------------------------" << endl;
+    cout << "Menu Program:" << endl;
+    cout << "1. Tambah Mahasiswa" << endl;
+    cout << "2. Tambah Kegiatan Mahasiswa" << endl;
+    cout << "3. Hapus Mahasiswa" << endl;
+    cout << "4. Hapus Kegiatan Mahasiswa" << endl;
+    cout << "5. Tampilkan Semua Mahasiswa dan Kegiatannya" << endl;
+    cout << "6. Tampilkan Mahasiswa Paling Aktif" << endl;
+    cout << "0. Keluar" << endl;
+    cout << "Pilihan Anda: ";
+}
+
 void createList(list &L){
     // Menerima input list L dan mendefinisikan L sebagai list kosong
     L.first = nullptr; 
@@ -150,9 +163,7 @@ void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out){
                 out = q->next;
             }
         }
-
     }
-
 }
 
 void tampilSemuaMahasiswa(list L){
