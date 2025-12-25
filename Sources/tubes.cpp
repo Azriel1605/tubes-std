@@ -166,8 +166,8 @@ void delKegiatan(adrMahasiswa p, string kegiatan, adrKegiatan &out){
             }
         
             if (q->next){
-                q->next = q->next->next;
                 out = q->next;
+                q->next = q->next->next;
             }
         }
     }
